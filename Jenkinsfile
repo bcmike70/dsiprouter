@@ -1,5 +1,5 @@
 pipeline {
-  agent { label "debian9" }
+  agent any
   parameters {
     password (name: 'DIGITALOCEAN_TOKEN')
   }
