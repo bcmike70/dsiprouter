@@ -6,7 +6,7 @@ pipeline {
   environment {
     TF_WORKSPACE = 'dev' //Sets the Terraform Workspace
     TF_IN_AUTOMATION = 'true'
-    DIGITALOCEAN_TOKEN = "${params.DIGITALOCEAN_TOKEN}"
+    DIGITALOCEAN_TOKEN = credentials('DIGITALOCEAN_TOKEN')
     TERRAFORM_HOME = "/usr/bin"
   }
   stages {
