@@ -17,8 +17,8 @@ pipeline {
     }
     stage('Terraform Plan') {
       steps {
-	echo $DIGITALOCEAN_TOKEN
-	echo ${env.DIGITALOCEAN_TOKEN}
+	echo "$DIGITALOCEAN_TOKEN"
+	echo "${env.DIGITALOCEAN_TOKEN}"
         sh "${env.TERRAFORM_HOME}/terraform plan -out=tfplan -input=false -var-file='dev.tfvars'"
       }
     }
