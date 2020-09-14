@@ -17,15 +17,17 @@ pipeline {
     }
     stage('Terraform Plan') {
       steps {
-	echo "$DIGITALOCEAN_TOKEN"
-	echo "${env.DIGITALOCEAN_TOKEN}"
         sh "${env.TERRAFORM_HOME}/terraform plan -out=tfplan -input=false -var-file='dev.tfvars'"
       }
     }
     stage('Terraform Apply') {
       steps {
-        input 'Apply Plan'
-        sh "${env.TERRAFORM_HOME}/terraform apply -input=false tfplan"
+        sh "${env.TERRAFORM_HOME}/terraform apply -auto-approve -input=false tfplan"
+      }
+    }
+    stage('Terraform Destroy') {
+      steps {
+        sh "${env.TERRAFORM_HOME}/terraform destroy -auto-approve"
       }
     }
    }
