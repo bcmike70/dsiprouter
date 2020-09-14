@@ -1,4 +1,4 @@
-variable "dropletname" {
+variable "hostname" {
     default="dsiprouter"
 }
 
